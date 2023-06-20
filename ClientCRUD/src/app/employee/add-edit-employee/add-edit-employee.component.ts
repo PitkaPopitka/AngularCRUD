@@ -17,6 +17,7 @@ export class AddEditEmployeeComponent implements OnInit {
   EmploymentDate = "";
   Salary = "";
   EmployeesList: any = [];
+  DepartmentsList: any =[];
 
   LoadEmployees(){
       this.service.getEmployeeList().subscribe((data: any) => {
@@ -30,9 +31,13 @@ export class AddEditEmployeeComponent implements OnInit {
         this.Salary = this.emp.Salary;
       })
   }
+  refreshDepsList(){
+    this.service.departmentsList().subscribe(data => { this.DepartmentsList = data })
+  }
 
   ngOnInit(): void {
     this.LoadEmployees();
+    this.refreshDepsList();
   }
 
   addEmployee(){

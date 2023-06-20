@@ -51,5 +51,12 @@ namespace CRUD.Controllers
             _employee.DeleteEmployee(id);
             return new JsonResult("Employee deleted");
         }
+
+        [HttpGet]
+        [Route("DepartmentsList")]
+        public async Task<IActionResult> DepartmentsList() 
+        {
+            return Ok(await _employee.DepartmentsList());
+        }
     }
 }

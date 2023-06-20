@@ -4,8 +4,8 @@
             <span class="input-group-text">Department</span>
             <select class="form-select" [(ngModel)]="Department">
                 <option>--Select--</option>
-                <option *ngFor="let dep of EmployeesList">
-                    {{dep.department}}
+                <option *ngFor="let dep of DepartmentsList">
+                    {{dep.name}}
                 </option>
             </select>
         </div> 

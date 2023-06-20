@@ -85,5 +85,10 @@ namespace CRUD.Repository
 
             return result;
         }
+
+        public async Task<IEnumerable<Department>> DepartmentsList() 
+        {
+            return await _companyContext.Departments.ToListAsync();
+        }
     }
 }

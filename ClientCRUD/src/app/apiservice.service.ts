@@ -32,4 +32,8 @@ export class ApiserviceService {
 
     return this.http.delete<number>(this.apiUrl + 'Employees/DeleteEmployee/' + employeeId, httpOptions);
   }
+
+  departmentsList(): Observable<any>{
+    return this.http.get<any[]>(this.apiUrl + 'Employees/DepartmentsList');
+  }
 }

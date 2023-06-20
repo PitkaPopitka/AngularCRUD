@@ -9,6 +9,7 @@ import { ApiserviceService } from '../apiservice.service';
 export class EmployeeComponent implements OnInit {
   constructor(private service: ApiserviceService){}
 
+  DepartmentsList: any =[];
   EmployeesList: any = [];
   ModalTitle = "";
   AddEditEmployeeComp: boolean = false;
@@ -18,8 +19,13 @@ export class EmployeeComponent implements OnInit {
     this.service.getEmployeeList().subscribe(data => { this.EmployeesList = data })
   }
 
+  refreshDepsList(){
+    this.service.departmentsList().subscribe(data => { this.DepartmentsList = data })
+  }
+
   ngOnInit(): void {
     this.refreshEmployeesList();
+    this.refreshDepsList();
   }
 
   AddClick(){

@@ -9,5 +9,6 @@ namespace CRUD.Repository
         Task<Employee> AddEmployee(Employee objEmployee);
         Task<Employee> UpdateEmployee(Employee objEmployee);
         bool DeleteEmployee(int Id);
+        Task<IEnumerable<Department>> DepartmentsList();
     }
 }
