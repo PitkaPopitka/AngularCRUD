@@ -60,10 +60,21 @@ namespace CRUD.Repository
 
         public async Task<Employee> AddEmployee(Employee objEmployee) 
         {
-            _companyContext.Employees.Add(objEmployee);
+            var newEmployee = new EmployeeObj
+            {
+                Id = _companyContext.Employees.Select(i => i.Id).Max() + 1,
+                Department = objEmployee.Department.Name,
+                Name = objEmployee.Name,
+                Status = _companyContext.Statuses.First(s => s.Id == 1).Statusname,
+                DateOfBirth = objEmployee.Dateofbirth,
+                EmploymentDate = objEmployee.Employmentdate,
+                Salary = objEmployee.Salary
+            };
+
+            _companyContext.Employees.Add(newEmployee);
             await _companyContext.SaveChangesAsync();
 
-            return objEmployee;
+            return newEmployee;
         }
 
         public bool DeleteEmployee(int ID) 
